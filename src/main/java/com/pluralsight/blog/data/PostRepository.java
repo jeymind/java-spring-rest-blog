@@ -1,5 +1,6 @@
 package com.pluralsight.blog.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pluralsight.blog.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -10,4 +11,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @RestResource (rel="containts-title", path="containtsTitle")
     List<Post> findByTitleContaining(String title);
+    List<Post> findByAuthor_Lastname(String lastname);
 }
